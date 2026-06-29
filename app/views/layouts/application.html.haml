@@ -13,14 +13,19 @@
       .container
         = link_to "AwesomeEvents", root_path, class: "navbar-brand mr-auto"
         %ul.navbar-nav
+          %li.nav-item
+            = link_to "イベントを作る", new_event_path, class: "nav-link"
           - if logged_in?
             %li.nav-item
-              = button_to "ログアウト", logout_path, method: :delete, data: { turbo: false }, class: "btn btn-link nav-link p-0"
+              = link_to "ログアウト", logout_path, class: "nav-link", method: :delete
           - else
             %li.nav-item
-              = button_to "GitHubでログイン", "/auth/github", method: :post, data: { turbo: false }, class: "btn btn-link nav-link p-0"
+              = link_to "GitHubでログイン", "/auth/github", class: "nav-link", method: :post
     .container
       - if flash.notice
         .alert.alert-success
           = flash.notice
+      - if flash.alert
+        .alert.alert-danger
+          = flash.alert
       = yield

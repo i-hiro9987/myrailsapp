@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  # ここにはルート情報が記載できる。
+  # どのメソッドでどのアクセスならここのコントローラに任せよう的なのもできる
+  # またdoなどを使用して、パスを入れ子にもできるのか？
+  # -> Ans: 正解。resources do ~ endでネストしたルーティングを定義できます(例: /events/1/tickets)。
+  # asはどういう意味なのか？どこに影響するのか？
+  # -> Ans: asはパスヘルパー名を指定します。as: :logoutでlogout_pathやlogout_urlが使えるようになります。
+  # 単にup, service-workerとしている部分は何？
+  # -> Ans: "up"はヘルスチェック用エンドポイント、"service-worker"と"manifest"はPWA(Progressive Web App)用のファイルです。
   resources :events
   root "welcome#index"
   get "/auth/:provider/callback" => "sessions#create"

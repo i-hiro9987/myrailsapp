@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{ content: "text/html; charset=UTF-8", "http-equiv": "Content-Type" }
+    %title AwesomeEvents
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload"
+    = stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    = javascript_importmap_tags
+  %body
+    %header.navbar.navbar-expand-sm.navbar-light.bg-light
+      .container
+        = link_to "AwesomeEvents", root_path, class: "navbar-brand mr-auto"
+        %ul.navbar-nav
+          - if logged_in?
+            %li.nav-item
+              = button_to "ログアウト", logout_path, method: :delete, data: { turbo: false }, class: "btn btn-link nav-link p-0"
+          - else
+            %li.nav-item
+              = button_to "GitHubでログイン", "/auth/github", method: :post, data: { turbo: false }, class: "btn btn-link nav-link p-0"
+    .container
+      - if flash.notice
+        .alert.alert-success
+          = flash.notice
+      = yield

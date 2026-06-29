@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
+  # describeは大分類テスト
+  # contextは状態（文脈）を記載
+  # itは小テスト
+  # expect.toはXXXであることを保証
+  # 逆に.not_toはXXXでないことを保証
   describe 'バリデーション' do
     context '正常なデータの場合' do
       it '有効であること' do
@@ -54,6 +59,9 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  # letはテストケース内で使える変数定義
+  # -> 補足: 遅延評価（lazy evaluation）で定義される。実際に呼ばれるまで実行されない。
+  # ->       let!にすると即時評価（定義した時点で実行）になる。DBへの事前登録が必要な場合はlet!を使う。
   describe '#created_by?' do
     let(:owner) { create(:user) }
     let(:other_user) { create(:user) }

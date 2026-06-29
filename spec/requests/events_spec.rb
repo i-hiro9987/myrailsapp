@@ -5,6 +5,8 @@ RSpec.describe "Events", type: :request do
   let(:other_user) { create(:user) }
   let(:event) { create(:event, owner: user) }
 
+  # ここの処理はどこで使用されている？
+  # -> Ans: 下の「before { login(user) }」で使用されている。beforeブロックはitの実行前に毎回呼ばれる前処理。
   def login(u)
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
       provider: u.provider,
@@ -15,6 +17,8 @@ RSpec.describe "Events", type: :request do
   end
 
   describe "GET /events/new" do
+    # ここでは変数などに入れなくてもレスポンスなどを確認（入れること）が可能？
+    # -> Ans: 正解。`response`はリクエストスペックで自動的に使えるオブジェクト。getやpostを呼んだ後の結果が入っている。
     it "未ログインの場合 root にリダイレクトされること" do
       get new_event_path
       expect(response).to redirect_to(root_path)

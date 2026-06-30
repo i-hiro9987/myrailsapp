@@ -28,7 +28,7 @@ services:
     depends_on:
       - mysql
     volumes:
-      - .:/app:cached
+      - .:/app
       - myrailsapp_bundle:/app/vendor/bundle
     stdin_open: true
     tty: true

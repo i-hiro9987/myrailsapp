@@ -5,6 +5,7 @@ RSpec.describe Ticket, type: :model do
     context '正常なデータの場合' do
       it '有効であること' do
         ticket = build(:ticket)
+        debugger
         expect(ticket).to be_valid
       end
     end

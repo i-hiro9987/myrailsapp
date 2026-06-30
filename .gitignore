@@ -33,3 +33,12 @@
 # Ignore key files for decrypting credentials and more.
 /config/*.key
 
+# Ignore Node.js dependencies.
+/node_modules
+
+# Ignore bundled gems (used in Docker volume).
+/vendor/bundle
+
+# macOS
+.DS_Store
+

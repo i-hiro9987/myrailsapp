@@ -1,7 +1,7 @@
 class CreateEvents < ActiveRecord::Migration[8.1]
   def change
     create_table :events do |t|
-      t.integer :owner_id
+      t.bigint :owner_id
       t.string :name,       null: false
       t.string :place,      null: false
       t.datetime :start_at, null: false

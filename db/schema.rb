@@ -16,7 +16,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_29_024728) do
     t.datetime "created_at", null: false
     t.datetime "end_at", null: false
     t.string "name", null: false
-    t.integer "owner_id"
+    t.bigint "owner_id"
     t.string "place", null: false
     t.datetime "start_at", null: false
     t.datetime "updated_at", null: false
@@ -26,9 +26,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_29_024728) do
   create_table "tickets", force: :cascade do |t|
     t.string "comment"
     t.datetime "created_at", null: false
-    t.integer "event_id", null: false
+    t.bigint "event_id", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["event_id", "user_id"], name: "index_tickets_on_event_id_and_user_id", unique: true
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end

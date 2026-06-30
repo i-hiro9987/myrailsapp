@@ -1,0 +1,3 @@
+CREATE DATABASE IF NOT EXISTS myrailsapp_test CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+GRANT ALL PRIVILEGES ON myrailsapp_test.* TO 'app'@'%';
+FLUSH PRIVILEGES;
